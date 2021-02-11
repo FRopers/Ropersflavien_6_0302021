@@ -6,6 +6,7 @@ const MIME_TYPES = {
     'image/png': 'png'
 };
 
+/*Renomme les images pour qu'elle soit unique*/
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
         callback(null, 'images');
@@ -13,7 +14,6 @@ const storage = multer.diskStorage({
     filename: (req, file, callback) => {
         const fileName = file.originalname.split('.')[0];
         const name = fileName.split(' ').join('_');
-        console.log(name);
         const extension = MIME_TYPES[file.mimetype];
         callback(null, name + Date.now() + '.' + extension);
     }

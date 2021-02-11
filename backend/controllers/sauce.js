@@ -1,18 +1,21 @@
 const Sauce = require('../models/sauce');
 const fs = require('fs');
 
+/*Recherche et envoie toutes les sauces*/
 exports.getAllSauce = (req, res, next) => {
     Sauce.find()
         .then(sauces => res.status(200).json(sauces))
         .catch(error => res.status(400).json({ error }));
 };
 
+/*Recherche et envoie une sauce*/
 exports.getOneSauce = (req, res, next) => {
     Sauce.findOne({ _id: req.params.id })
         .then(sauce => res.status(200).json(sauce))
         .catch(error => res.status(404).json({ error }));
 };
 
+/*Récupère les données envoyées et les sauvegarde dans la bdd, sauvegarde l'image dans le dossier image*/
 exports.createSauce = (req, res, next) => { 
     const sauceObject = JSON.parse(req.body.sauce);
     delete sauceObject._id;
@@ -29,6 +32,7 @@ exports.createSauce = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
 
+/*Récupère les modifications et les sauvegarde dans le bdd*/
 exports.modifySauce = (req, res, next) => {
     const sauceObject = req.file ?
     {
@@ -40,6 +44,7 @@ exports.modifySauce = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
 
+/*Recherche la sauce appelée et la supprime de la bdd, supprime l'image du dossier image*/
 exports.deleteSauce = (req, res, next) => {
     Sauce.findOne({ _id: req.params.id })
         .then(sauce => {
@@ -53,6 +58,7 @@ exports.deleteSauce = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
 
+/*Recherche la sauce liker ou disliker dans la bdd. Selon son choix le comptabilise et sauvegarde le userID*/
 exports.changeLikeAndDislikes = (req, res, next) => {
     Sauce.findOne({ _id: req.params.id })
         .then(sauce => {
@@ -76,7 +82,7 @@ exports.changeLikeAndDislikes = (req, res, next) => {
             }
             Sauce.updateOne({ _id: req.params.id }, sauce)
                 .then(sauce => res.status(200).json(sauce))
-                .catch(error => res.status(400).json({ error }));
+                .catch(error => res.status(500).json({ error }));
         })
         .catch(error => res.status(400).json({ error }));
 };

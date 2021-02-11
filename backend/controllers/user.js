@@ -1,8 +1,12 @@
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+const privateKey = process.env.JWT_PRIVATEKEY;
 
 const User = require('../models/user');
 
+/*Sauvegarde un utilisateur sur la bdd en utilisant bscrypt pour hash le password*/
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
     .then(hash => { 
@@ -17,6 +21,7 @@ exports.signup = (req, res, next) => {
     .catch(error => res.status(400).json({ error }));
 };
 
+/*Vérifie si l'utilisateur loggé existe sur la bdd et utilise le bon mdp, si oui il lui attribue un token*/
 exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email })
         .then(user => {
@@ -30,11 +35,7 @@ exports.login = (req, res, next) => {
                     }
                     res.status(200).json({
                         userId: user._id,
-                        token: jwt.sign(
-                            { userId: user._id },
-                            'RANDOM_TOKEN_SECRET',
-                            { expiresIn: '24h'}
-                        )
+                        token: jwt.sign({ userId: user._id }, privateKey,{ expiresIn: '24h'})
                     });
                 })
                 .catch(error => res.status(500).json({ error }));
