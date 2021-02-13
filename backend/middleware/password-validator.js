@@ -8,7 +8,7 @@ schema
 .has().lowercase()                              // Doit avoir des lettres minuscules
 .has().digits(1)                                // Doit avoir au moins 1 chiffres
 
-/*Vérifie si le mot de passe correspond au restriction incorporée dans schema*/
+/*Vérifie si le mot de passe correspond aux restrictions incorporées dans schema*/
 module.exports = (req, res, next) => {
         if (schema.validate(req.body.password) === false) {
             res.status(401).json({ message: 'Mot de passe incorrect !' })
