@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const userCtrl = require('../controllers/user');
-const limiter = require('../middleware/express-rate-limit-config');
+const limiter = require('../component/express-rate-limit-config');
 const passwordValidator = require('../middleware/password-validator')
 
 router.post('/signup', passwordValidator, userCtrl.signup);
