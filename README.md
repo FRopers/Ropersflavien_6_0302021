@@ -11,7 +11,7 @@
   Le projet nous mettait dans la peau d'un développeur backend freelance qui avait pour mission la création de la partie backend 
   d’une application d’évaluation de sauces piquantes.
   
-  (Frontend fournis par OpenClassrooms)
+  (Frontend fourni par OpenClassrooms)
 
 ### Langages, Framework et Outils utilisés ###
 
