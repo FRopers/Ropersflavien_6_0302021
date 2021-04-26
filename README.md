@@ -1,15 +1,25 @@
 # So peckocko #
 
-  Projet 7 de la formation de développeur WEB 
+Projet 6 de la formation de développeur WEB
 
-### Prérequis ###
+### Mission ###
+  
+Construire une API sécurisée pour une application d'avis gastronomiques
 
-  Vous devez avoir Node et npm d'installés localement sur votre machine.
+### Notes ###
 
-### Installation ###
+Le projet nous mettait dans la peau d'un développeur backend freelance qui avait pour mission la création de la partie backend d’une application d’évaluation de sauces    piquantes.
+  
+(Frontend fournis par OpenClassrooms)
 
-- Cloner ce repository
-- Dans le dossier frontend, lancer npm install et une fois terminé lancer npm run server
-- Dans le dossier backend, lancer npm install, copier le fichier .env.sample et coller-le dans le même dossier, renommé le fichier copier en .env et remplissez le      fichier avec les données permettant de vous connecter à la base de donnée (données que je vous transmet). Pour terminer lancer nodemon server.
-Le serveur fonctionne par défault en localhost avec le port 3000.
-- Importer le fichier groupomania.sql présent dans le dossier server dans une base de donnée SQL.
+### Langages, Framework et Outils utilisés ###
+
+- Node.js
+- Express
+- MongoDB
+
+### Compétences évaluées ###
+ 
+- Implémenter un modèle logique de données conformément à la réglementation
+- Stocker des données de manière sécurisée
+- Mettre en œuvre des opérations CRUD de manière sécurisée
