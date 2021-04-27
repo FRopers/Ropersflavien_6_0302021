@@ -1,4 +1,4 @@
-# So peckocko #
+# So Pekocko #
 
   Projet 6 de la formation de développeur WEB
 
